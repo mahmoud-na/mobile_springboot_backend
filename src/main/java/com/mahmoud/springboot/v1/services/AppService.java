@@ -25,11 +25,12 @@ public class AppService {
 
 
     List<BranchModel> branches = new ArrayList<>(
-            Arrays.asList(
-                    new BranchModel(123, "0123456789", "Masr El gdeda", services),
-                    new BranchModel(124, "6164664464", "Nasr City", services),
-                    new BranchModel(125, "9655478123", "Banha", services)
-            ));
+//            Arrays.asList(
+//                    new BranchModel(123, "0123456789", "Masr El gdeda", services),
+//                    new BranchModel(124, "6164664464", "Nasr City", services),
+//                    new BranchModel(125, "9655478123", "Banha", services)
+//            )
+    );
 
 
     List<String> restaurantImages = new ArrayList<>(Arrays.asList(
@@ -51,60 +52,61 @@ public class AppService {
 
 
     List<RestaurantModel> restaurants = new ArrayList<>(
-            Arrays.asList(
-                    new RestaurantModel(
-                            0, "KFC",
-                            phones,
-                            branches,
-                            restaurantImages,
-                            restaurantMenuImages,
-                            "restaurantLogoImage",
-                            "10:15 am",
-                            "12:15 am",
-                            "mat3am lle btates el m7amra we el fra5 el 4a2ya",
-                            "55555",
-                            12500
-                    ),
-                    new RestaurantModel(
-                            1, "Syed Hanfy",
-                            phones,
-                            branches,
-                            restaurantImages,
-                            restaurantMenuImages,
-                            "restaurantLogoImage",
-                            "10:15 am",
-                            "12:15 am",
-                            "A7la mat3am ko4ary fe masr",
-                            "44444",
-                            15987
-                    ),
-                    new RestaurantModel(
-                            2, "BurgerKing",
-                            phones,
-                            branches,
-                            restaurantImages,
-                            restaurantMenuImages,
-                            "restaurantLogoImage",
-                            "10:15 am",
-                            "12:15 am",
-                            "El burgraya el 4a2ya el kombo large Burger",
-                            "3333",
-                            5000
-                    ),
-                    new RestaurantModel(
-                            3, "7ader moot 3anter",
-                            phones,
-                            branches,
-                            restaurantImages,
-                            restaurantMenuImages,
-                            "restaurantLogoImage",
-                            "10:15 am",
-                            "12:15 am",
-                            "a7la mn mat3am el prince 5od balak",
-                            "2222",
-                            12500
-                    )
-            ));
+//            Arrays.asList(
+//                    new RestaurantModel(
+//                            0, "KFC",
+//                            phones,
+//                            branches,
+//                            restaurantImages,
+//                            restaurantMenuImages,
+//                            "restaurantLogoImage",
+//                            "10:15 am",
+//                            "12:15 am",
+//                            "mat3am lle btates el m7amra we el fra5 el 4a2ya",
+//                            "55555",
+//                            12500
+//                    ),
+//                    new RestaurantModel(
+//                            1, "Syed Hanfy",
+//                            phones,
+//                            branches,
+//                            restaurantImages,
+//                            restaurantMenuImages,
+//                            "restaurantLogoImage",
+//                            "10:15 am",
+//                            "12:15 am",
+//                            "A7la mat3am ko4ary fe masr",
+//                            "44444",
+//                            15987
+//                    ),
+//                    new RestaurantModel(
+//                            2, "BurgerKing",
+//                            phones,
+//                            branches,
+//                            restaurantImages,
+//                            restaurantMenuImages,
+//                            "restaurantLogoImage",
+//                            "10:15 am",
+//                            "12:15 am",
+//                            "El burgraya el 4a2ya el kombo large Burger",
+//                            "3333",
+//                            5000
+//                    ),
+//                    new RestaurantModel(
+//                            3, "7ader moot 3anter",
+//                            phones,
+//                            branches,
+//                            restaurantImages,
+//                            restaurantMenuImages,
+//                            "restaurantLogoImage",
+//                            "10:15 am",
+//                            "12:15 am",
+//                            "a7la mn mat3am el prince 5od balak",
+//                            "2222",
+//                            12500
+//                    )
+//            )
+    );
 
 
     public List<RestaurantModel> getAllRestaurants() {
