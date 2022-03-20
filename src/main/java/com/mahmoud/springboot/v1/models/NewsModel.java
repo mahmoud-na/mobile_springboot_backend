@@ -27,8 +27,14 @@ public class NewsModel {
 
     @ElementCollection
     @CollectionTable(
-            name = "restaurant_news",
+            name = "new_Image",
             joinColumns = @JoinColumn(name = "newId")
     )
     private List<String> newImages;
+
+//    @ManyToOne
+//    @JoinColumn(name = "restaurant_id",
+//    referencedColumnName = "restaurantId"
+//    )
+//    private RestaurantModel restaurant;
 }

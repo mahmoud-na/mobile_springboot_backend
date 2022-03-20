@@ -64,7 +64,6 @@ public class RestaurantModel {
             referencedColumnName = "restaurantId"
     )
     private List<BranchModel> branches;
-
     //================== ONE TO MANY NEWS COLUMN ========
     @OneToMany(
             cascade = CascadeType.ALL
@@ -93,7 +92,25 @@ public class RestaurantModel {
     private List<CategoryModel> categories;
 
 
+    @ManyToMany(
+            cascade = CascadeType.MERGE
+    )
+    @JoinTable(
+            name = "restaurant_user_favorite_map",
+            joinColumns = @JoinColumn(
+                    name = "restaurant_id",
+                    referencedColumnName = "restaurantId"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "userId"
+            )
+    )
+    private List<UserModel> users = new java.util.ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
-    private List<Subscription> subscription = new java.util.ArrayList<>();
+    @OneToMany( mappedBy = "restaurant")
+    private List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
+
+    @OneToMany( mappedBy = "restaurant")
+    private List<ReviewModel> reviews = new java.util.ArrayList<>();
 }
