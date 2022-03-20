@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ class RestaurantRepositoryTest {
                 .offerDescription("%od talata we 5oood wa7ed kman")
                 .offerStart(Timestamp.from(Instant.now()))
                 .offerEnd(Timestamp.from(Instant.now()))
-                .offerImages(List.of("Offer_Image 1", "Offer_Image 2", "Offer_Image 3", "Offer_Image 4"))
+                .offerImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .build();
 
         OfferModel offer2 = OfferModel.builder()
@@ -42,32 +43,38 @@ class RestaurantRepositoryTest {
                 .offerDescription("%od talata we 5oood wa7ed kman")
                 .offerStart(Timestamp.from(Instant.now()))
                 .offerEnd(Timestamp.from(Instant.now()))
-                .offerImages(List.of("Offer_Image 1", "Offer_Image 2", "Offer_Image 3", "Offer_Image 4"))
+                .offerImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
+
                 .build();
         OfferModel offer3 = OfferModel.builder()
                 .offerTitle("3aaaard el komboooo")
                 .offerDescription("5od talata we 5oood wa7ed kman")
                 .offerStart(Timestamp.from(Instant.now()))
                 .offerEnd(Timestamp.from(Instant.now()))
-                .offerImages(List.of("Offer_Image 1", "Offer_Image 2", "Offer_Image 3", "Offer_Image 4"))
+                .offerImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .build();
 
         ServicesModel service1 = ServicesModel.builder()
                 .serviceName("Wifi")
+                .serviceLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
 
 
         ServicesModel service2 = ServicesModel.builder()
                 .serviceName("Open-Air")
+                .serviceLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         ServicesModel service3 = ServicesModel.builder()
                 .serviceName("Playstation")
+                .serviceLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         ServicesModel service4 = ServicesModel.builder()
                 .serviceName("Massage")
+                .serviceLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         ServicesModel service5 = ServicesModel.builder()
                 .serviceName("Spa")
+                .serviceLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
 
         BranchModel branch1 = BranchModel.builder()
@@ -95,48 +102,55 @@ class RestaurantRepositoryTest {
         NewsModel new1 = NewsModel.builder()
                 .newTittle("5asm 50% 3la el kebda el kelaby ")
                 .newDescription("5ooood wa7d kebda taaaaa5od wa7ed tany 3aleeeeh")
-                .newImages(List.of("new Image 1 ", "new Image 2 ", "new Image 3 "))
+                .newImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
+
                 .newDate(Timestamp.from(Instant.now()))
                 .build();
         NewsModel new2 = NewsModel.builder()
                 .newTittle("5asm 50% 3la el kebda el kelaby ")
                 .newDescription("5ooood wa7d kebda taaaaa5od wa7ed tany 3aleeeeh")
-                .newImages(List.of("new Image 1 ", "new Image 2 ", "new Image 3 "))
+                .newImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
+
                 .newDate(Timestamp.from(Instant.now()))
                 .build();
         NewsModel new3 = NewsModel.builder()
                 .newTittle("5asm 50% 3la el kebda el kelaby ")
                 .newDescription("5ooood wa7d kebda taaaaa5od wa7ed tany 3aleeeeh")
-                .newImages(List.of("new Image 1 ", "new Image 2 ", "new Image 3 "))
+                .newImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .newDate(Timestamp.from(Instant.now()))
                 .build();
 
 
         CategoryModel category = CategoryModel.builder()
-                .CategoryName("Akl sory")
+                .categoryName("Akl sory")
+                .categoryLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         CategoryModel category1 = CategoryModel.builder()
-                .CategoryName("Akl Masry")
+                .categoryName("Akl Masry")
+                .categoryLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         CategoryModel category2 = CategoryModel.builder()
-                .CategoryName("Akl italy")
+                .categoryName("Akl italy")
+                .categoryLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
         CategoryModel category3 = CategoryModel.builder()
-                .CategoryName("Akl saudi")
+                .categoryName("Akl saudi")
+                .categoryLogo("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .build();
 
         RestaurantModel restaurant = RestaurantModel.builder()
                 .restaurantName("7oda talawth")
-                .restaurantClosingTime(Timestamp.from(Instant.now()))
-                .restaurantOpeningTime(Timestamp.from(Instant.now()))
+                .restaurantClosingTime( LocalTime.now())
+                .restaurantOpeningTime(  LocalTime.now())
                 .restaurantHotline("15988")
                 .restaurantDescription("Agmed kebda fe masr")
                 .restaurantViewers(5000)
-                .restaurantLogoImage("kjfhadkhfadkhadkh")
+                .restaurantCoverImage("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
+                .restaurantLogoImage("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank")
                 .branches(List.of(branch1, branch2, branch3))
                 .news(List.of(new1, new2, new3))
-                .restaurantImages(List.of("Restaurant Image ===> 1", "Restaurant Image ===> 3", "Restaurant Image ===> 3"))
-                .restaurantMenuImages(List.of("Restaurant Menu Image ===> 1", "Restaurant Menu Image ===> 3", "Restaurant Menu Image ===> 3"))
+                .restaurantImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
+                .restaurantMenuImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .categories(List.of(category, category1, category2, category3))
                 .users(users)
                 .build();
@@ -194,7 +208,7 @@ class RestaurantRepositoryTest {
         reviewModelRepository.save(review);
         return review;
     }
-
+@Test
     public void getRestaurant() {
         int x = 1;
         long k = 1;
