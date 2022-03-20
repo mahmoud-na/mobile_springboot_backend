@@ -1,23 +1,25 @@
 package com.mahmoud.springboot.v1.models;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "services")
-public class ServicesModel {
+@Table(name = "category")
+@Builder
+public class CategoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int serviceId;
-    @Column
-    private String serviceName;
+    private Long categoryId;
+    private String CategoryName;
+
+
+
 }
