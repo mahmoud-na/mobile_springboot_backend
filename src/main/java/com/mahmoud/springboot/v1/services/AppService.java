@@ -15,13 +15,13 @@ public class AppService {
 
     List<String> phones = new ArrayList<>(Arrays.asList("01151742505", "01023104355"));
 
-    List<ServicesModel> services = new ArrayList<>(
-            Arrays.asList(
-                    new ServicesModel(1, "Wifi"),
-                    new ServicesModel(2, "Open-Air"),
-                    new ServicesModel(3, "In-Door"),
-                    new ServicesModel(4, "PlayStation")
-            ));
+//    List<ServicesModel> services = new ArrayList<>(
+//            Arrays.asList(
+//                    new ServicesModel( "Wifi"),
+//                    new ServicesModel(2, "Open-Air"),
+//                    new ServicesModel(3, "In-Door"),
+//                    new ServicesModel(4, "PlayStation")
+//            ));
 
 
     List<BranchModel> branches = new ArrayList<>(
