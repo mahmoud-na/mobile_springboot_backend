@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 
 @SpringBootTest
@@ -27,7 +28,7 @@ class RestaurantRepositoryTest {
     private ReviewModelRepository reviewModelRepository;
 
 
-    public RestaurantModel saveRestaurant(List<UserModel> users) {
+    public RestaurantModel saveRestaurant() {
 
 
         OfferModel offer1 = OfferModel.builder()
@@ -81,12 +82,14 @@ class RestaurantRepositoryTest {
                 .branchPhone(List.of("123456789", "1122334455", "99887766554"))
                 .branchLocation("new cairo")
                 .branchStatus(true)
+                .branchAddress("new giza")
                 .services(List.of(service1, service2, service3, service4, service5))
                 .offers(List.of(offer1, offer2, offer3))
                 .build();
         BranchModel branch2 = BranchModel.builder()
                 .branchPhone(List.of("3578951", "1598753", "456987"))
                 .branchLocation("new giza")
+                .branchAddress("new giza")
                 .branchStatus(true)
                 .services(List.of(service2, service3, service5))
                 .offers(List.of(offer1))
@@ -94,6 +97,7 @@ class RestaurantRepositoryTest {
         BranchModel branch3 = BranchModel.builder()
                 .branchPhone(List.of("258963", "456987", "13365444"))
                 .branchLocation("new october")
+                .branchAddress("new giza")
                 .branchStatus(true)
                 .services(List.of(service1, service3, service4))
                 .offers(List.of(offer1, offer3))
@@ -152,7 +156,7 @@ class RestaurantRepositoryTest {
                 .restaurantImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .restaurantMenuImages(List.of("https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank", "https://stackoverflow.com/questions/26860418/bean-validation-collection-of-string-not-blank"))
                 .categories(List.of(category, category1, category2, category3))
-                .users(users)
+//                .users(users)
                 .build();
         restaurantRepository.save(restaurant);
         return restaurant;
@@ -160,8 +164,8 @@ class RestaurantRepositoryTest {
 
     @Test
     public void SaveAllData() {
-        List<UserModel> userModel = saveUsers();
-        RestaurantModel restaurant = saveRestaurant(userModel);
+        RestaurantModel restaurant = saveRestaurant();
+        Set<UserModel> userModel = saveUsers(Set.of(restaurant));
         PackageModel packageModel = savePackage();
         SubscriptionModel subscriptionModel = restaurantSubscription(restaurant, packageModel);
         ReviewModel reviewModel = saveReview(restaurant, userModel);
@@ -188,22 +192,25 @@ class RestaurantRepositoryTest {
         return subscriptionModel;
     }
 
-    public List<UserModel> saveUsers() {
-        UserModel user = UserModel.builder().build();
+    public Set<UserModel> saveUsers(Set<RestaurantModel> restaurantModels) {
+        UserModel user = UserModel.builder()
+                .restaurants(restaurantModels)
+                .build();
         UserModel user1 = UserModel.builder().build();
         UserModel user2 = UserModel.builder().build();
         UserModel user3 = UserModel.builder().build();
         userModelRepository.saveAll(List.of(user,user1,user2,user3));
-        return List.of(user,user1,user2,user3);
+        return Set.of(user,user1,user2,user3);
     }
 
-    public ReviewModel saveReview(RestaurantModel restaurantModel, List<UserModel> userModel) {
+    public ReviewModel saveReview(RestaurantModel restaurantModel, Set<UserModel> userModel) {
         ReviewModel review = ReviewModel.builder()
                 .restaurant(restaurantModel)
                 .reviewRate(4)
                 .reviewDate(Timestamp.from(Instant.now()))
                 .reviewComment("Elragel da mya mya we kebda de zy el fooool")
-                .user(userModel.get(0))
+                .user(userModel.stream().toList().get(0))
+//                .user(userModel.get(0))
                 .build();
         reviewModelRepository.save(review);
         return review;

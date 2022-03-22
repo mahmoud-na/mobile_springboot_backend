@@ -1,5 +1,6 @@
 package com.mahmoud.springboot.v1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
@@ -7,11 +8,11 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Table(name = "review")
 public class ReviewModel {
     @Id
@@ -25,18 +26,20 @@ public class ReviewModel {
     private int reviewRate;
     private String reviewComment;
 
+
     @NotNull(message = "Review User Can not be NULL")
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(
-            name = "user_id",
-            referencedColumnName = "userId")
-    private UserModel user;
+            name = "user_id"
 
+            )
+//    @JsonIgnore
+    private UserModel user;
+    @JsonIgnore
     @NotNull(message = "Review Restaurant Can not be NULL")
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(
-            name = "restaurant_id",
-            referencedColumnName = "restaurantId"
+            name = "restaurant_id"
     )
     private RestaurantModel restaurant;
 }

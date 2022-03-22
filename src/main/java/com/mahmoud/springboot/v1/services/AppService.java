@@ -1,8 +1,8 @@
 package com.mahmoud.springboot.v1.services;
 
-import com.mahmoud.springboot.v1.models.BranchModel;
-import com.mahmoud.springboot.v1.models.RestaurantModel;
-import com.mahmoud.springboot.v1.models.ServicesModel;
+import com.mahmoud.springboot.v1.models.*;
+import com.mahmoud.springboot.v1.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,44 +12,53 @@ import java.util.List;
 @Service
 public class AppService {
 
-
-    List<String> phones = new ArrayList<>(Arrays.asList("01151742505", "01023104355"));
-
-//    List<ServicesModel> services = new ArrayList<>(
+    @Autowired
+    NewsModelRepository newsModelRepository;
+    @Autowired
+    OfferModelRepository offerModelRepository;
+    @Autowired
+    RestaurantRepository restaurantRepository;
+    @Autowired
+    UserModelRepository userModelRepository;
+    @Autowired
+    ReviewModelRepository reviewModelRepository;
+//    List<String> phones = new ArrayList<>(Arrays.asList("01151742505", "01023104355"));
+//
+////    List<ServicesModel> services = new ArrayList<>(
+////            Arrays.asList(
+////                    new ServicesModel( "Wifi"),
+////                    new ServicesModel(2, "Open-Air"),
+////                    new ServicesModel(3, "In-Door"),
+////                    new ServicesModel(4, "PlayStation")
+////            ));
+//
+//
+//    List<BranchModel> branches = new ArrayList<>(
+////            Arrays.asList(
+////                    new BranchModel(123, "0123456789", "Masr El gdeda", services),
+////                    new BranchModel(124, "6164664464", "Nasr City", services),
+////                    new BranchModel(125, "9655478123", "Banha", services)
+////            )
+//    );
+//
+//
+//    List<String> restaurantImages = new ArrayList<>(Arrays.asList(
+//            "restaurantImage--1",
+//            "restaurantImage--2",
+//            "restaurantImage--3",
+//            "restaurantImage--4"
+//
+//    ));
+//
+//
+//    List<String> restaurantMenuImages = new ArrayList<>(
 //            Arrays.asList(
-//                    new ServicesModel( "Wifi"),
-//                    new ServicesModel(2, "Open-Air"),
-//                    new ServicesModel(3, "In-Door"),
-//                    new ServicesModel(4, "PlayStation")
+//                    "restaurantMenuImage--1",
+//                    "restaurantMenuImage--2",
+//                    "restaurantMenuImage--3",
+//                    "restaurantMenuImage--4"
 //            ));
-
-
-    List<BranchModel> branches = new ArrayList<>(
-//            Arrays.asList(
-//                    new BranchModel(123, "0123456789", "Masr El gdeda", services),
-//                    new BranchModel(124, "6164664464", "Nasr City", services),
-//                    new BranchModel(125, "9655478123", "Banha", services)
-//            )
-    );
-
-
-    List<String> restaurantImages = new ArrayList<>(Arrays.asList(
-            "restaurantImage--1",
-            "restaurantImage--2",
-            "restaurantImage--3",
-            "restaurantImage--4"
-
-    ));
-
-
-    List<String> restaurantMenuImages = new ArrayList<>(
-            Arrays.asList(
-                    "restaurantMenuImage--1",
-                    "restaurantMenuImage--2",
-                    "restaurantMenuImage--3",
-                    "restaurantMenuImage--4"
-            ));
-
+//
 
     List<RestaurantModel> restaurants = new ArrayList<>(
 //            Arrays.asList(
@@ -110,7 +119,12 @@ public class AppService {
 
 
     public List<RestaurantModel> getAllRestaurants() {
-        return restaurants;
+
+//        return restaurantRepository.findAll();
+        RestaurantModel res=restaurantRepository.getById(1L);
+        List<ReviewModel> rev=reviewModelRepository.findByRestaurant(res);
+        res.setReviews(rev);
+        return List.of(res);
     }
 
 
@@ -125,15 +139,31 @@ public class AppService {
 
 
     public boolean addRestaurant(RestaurantModel restaurant) {
-         return restaurants.add(restaurant);
+        return restaurants.add(restaurant);
     }
 
-    public boolean deleteRestaurant(int id){
+    public boolean deleteRestaurant(int id) {
         for (RestaurantModel restaurant : restaurants) {
             if (restaurant.getRestaurantId() == id) {
                 return restaurants.remove(restaurant);
             }
         }
         return false;
+    }
+
+    public List<NewsModel> getAllNews() {
+        return newsModelRepository.findAll();
+    }
+
+    public List<OfferModel> getAllOffers() {
+        return offerModelRepository.findAll();
+    }
+
+    public UserModel getAllUsers() {
+//        return userModelRepository.findAll();
+        UserModel usr=userModelRepository.findById(4L).get();
+        List<ReviewModel> rev=reviewModelRepository.findByUser(usr);
+        usr.setReviews(rev);
+        return usr;
     }
 }
