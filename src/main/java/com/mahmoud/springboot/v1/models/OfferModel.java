@@ -32,9 +32,8 @@ public class OfferModel {
     @NotNull(message = "Offer End Date can not be NULL")
     private Timestamp offerEnd;
 
-    @Basic(fetch = FetchType.LAZY)
+
     @ElementCollection
     @CollectionTable(name = "offer_images", joinColumns = @JoinColumn(name = "offer_id"))
-    @ToString.Exclude
 List<@URL(message = "Offer Image URL is not valid") @NotNull(message = "Offer Image URL is not valid") String> offerImages = new ArrayList<>();
 }

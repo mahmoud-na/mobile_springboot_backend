@@ -24,6 +24,6 @@ public class PackageModel {
     @NotBlank(message = "Package name must be not empty")
     private String packageName;
 
-    @OneToMany(mappedBy = "packageModel")
-    private List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
+//    @OneToMany(mappedBy = "packageModel")
+//    private List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
 }

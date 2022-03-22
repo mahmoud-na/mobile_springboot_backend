@@ -1,5 +1,6 @@
 package com.mahmoud.springboot.v1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -13,9 +14,12 @@ import javax.validation.constraints.PositiveOrZero;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -36,7 +40,7 @@ public class RestaurantModel {
     @NotNull(message = "Restaurant Opening Time can not be NULL")
     private LocalTime restaurantOpeningTime;
     @NotNull(message = "Restaurant Closing Time can not be NULL")
-    private LocalTime  restaurantClosingTime;
+    private LocalTime restaurantClosingTime;
     private String restaurantHotline;
     @PositiveOrZero(message = "Viewers must be greater than or equal ZERO")
     @Column(nullable = false)
@@ -95,25 +99,36 @@ public class RestaurantModel {
                     referencedColumnName = "categoryId"
             )
     )
+//    @JsonIgnore
     private List<CategoryModel> categories = new java.util.ArrayList<>();
 
-    @ManyToMany(
-            cascade = CascadeType.MERGE
-    )
-    @JoinTable(
-            name = "restaurant_user_favorite_map",
-            joinColumns = @JoinColumn(
-                    name = "restaurant_id",
-                    referencedColumnName = "restaurantId"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "user_id",
-                    referencedColumnName = "userId"
-            )
-    )
-    private List<UserModel> users = new java.util.ArrayList<>();
-    @OneToMany( mappedBy = "restaurant")
-    private List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
-    @OneToMany( mappedBy = "restaurant")
-    private List<ReviewModel> reviews = new java.util.ArrayList<>();
+//    @ManyToMany(
+//            cascade = CascadeType.MERGE
+//
+//    )
+//    @JoinTable(
+//            name = "restaurant_user_favorite_map",
+//            joinColumns = @JoinColumn(
+//                    name = "restaurant_id",
+//                    referencedColumnName = "restaurantId"
+//
+//            ),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "user_id",
+//                    referencedColumnName = "userId"
+//            )
+//    )
+//    private Set<UserModel> users;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "restaurant")
+//    private List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
+//@JsonIgnore
+private transient List<SubscriptionModel> subscriptionModel = new java.util.ArrayList<>();
+
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "restaurant")
+//    private Set<ReviewModel> reviews = new HashSet<ReviewModel>();
+//@JsonIgnore
+    private transient List<ReviewModel> reviews = new java.util.ArrayList<>();
+
 }
