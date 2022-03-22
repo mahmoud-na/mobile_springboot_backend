@@ -122,6 +122,7 @@ public class AppService {
 
 //        return restaurantRepository.findAll();
         RestaurantModel res=restaurantRepository.findById(1L).get();
+        //
         List<ReviewModel> rev=reviewModelRepository.findByRestaurant(res);
         res.setReviews(rev);
         return List.of(res);
