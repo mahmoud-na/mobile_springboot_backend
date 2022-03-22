@@ -121,7 +121,7 @@ public class AppService {
     public List<RestaurantModel> getAllRestaurants() {
 
 //        return restaurantRepository.findAll();
-        RestaurantModel res=restaurantRepository.getById(1L);
+        RestaurantModel res=restaurantRepository.findById(1L).get();
         List<ReviewModel> rev=reviewModelRepository.findByRestaurant(res);
         res.setReviews(rev);
         return List.of(res);
